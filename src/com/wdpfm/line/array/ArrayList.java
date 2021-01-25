@@ -30,7 +30,7 @@ public class ArrayList {
         return capacity;
     }
 
-    //插入操作
+    //指定位置插入元素
     public void insert(int index,int e){
         if (size==data.length)
             throw new IllegalArgumentException("插入失败，数组已满");
