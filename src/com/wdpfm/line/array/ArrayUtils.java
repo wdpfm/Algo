@@ -46,4 +46,8 @@ public class ArrayUtils {
         }
         return dest;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
