@@ -56,7 +56,7 @@ public class ArrayList<E> {
         //1.创建一个容量为newCapacity的临时数组
         E[] newData=(E[])new Object[newCapacity];
         //2.将原来数组中的元素复制到新数组中
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < size; i++) {
             newData[i]=data[i];
         }
         //3.将新数组覆盖老数据组

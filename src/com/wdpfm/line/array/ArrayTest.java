@@ -16,5 +16,9 @@ public class ArrayTest {
         System.out.println(data);
         data.insertLast(15);
         System.out.println(data);
+        data.removeLast();
+        data.removeLast();
+        data.removeLast();
+        System.out.println(data);
     }
 }
