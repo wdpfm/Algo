@@ -128,4 +128,15 @@ public class LinkedList<E> {
         size--;
         return delNode.e;
     }
+
+    //判断链表中是否存在指定元素
+    public boolean contains(E e){
+        Node curr=dummyHead.next;
+        while(curr!=null){
+            if(curr.e.equals(e))
+                return true;
+            curr=curr.next;
+        }
+        return false;
+    }
 }
