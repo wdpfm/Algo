@@ -3,13 +3,13 @@ package com.wdpfm.line.array;
 /**
  * 描述:封装数组常用操作
  */
-public class ArrayList {
-     private int[] data;//数组
+public class ArrayList<E> {
+     private E[] data;//数组
      private int capacity;//容量
      private int size;//存储的元素个数
 
     public ArrayList(int capacity){
-        this.data=new int[capacity];
+        this.data=(E[])new Object[capacity];
         this.capacity=capacity;
         this.size=0;
     }
@@ -32,7 +32,7 @@ public class ArrayList {
 
     //指定位置插入元素
     //时间复杂度O(n)
-    public void insert(int index,int e){
+    public void insert(int index,E e){
         if (size==data.length)
             throw new IllegalArgumentException("插入失败，数组已满");
         if (index<0||index>size){
@@ -47,24 +47,24 @@ public class ArrayList {
     }
 
     //头插
-    public void insertFirst(int e){
+    public void insertFirst(E e){
         insert(0,e);
     }
 
     //尾插
-    public void insertLast(int e){
+    public void insertLast(E e){
         insert(size,e);
     }
 
     //查询操作
-    public int get(int index){
+    public E get(int index){
         if(index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
         return data[index];
     }
 
     //查找操作 查找元素e所在的索引，如果元素e不存在，则返回-1
-    public int find(int e){
+    public int find(E e){
         for (int i = 0; i < size; i++) {
             if (data[i]==e)
                 return i;
@@ -74,25 +74,25 @@ public class ArrayList {
 
     //判断是否存在
     public boolean contain(int target){
-        for (int num:data){
-            if (num==target)
+        for (E num:data){
+            if (num.equals(target))
                 return true;
         }
         return false;
     }
 
     //修改操作
-    public void update(int index,int e){
+    public void update(int index,E e){
         if(index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
         data[index]=e;
     }
 
     //删除操作
-    public int remove(int index){
+    public E remove(int index){
         if(index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
-        int result=data[index];
+        E result=data[index];
         for (int i = index+1; i < size; i++) {
             data[i-1]=data[i];
         }
@@ -101,17 +101,17 @@ public class ArrayList {
     }
 
     //删除第一个元素
-    public int removeFirst(){
+    public E removeFirst(){
         return remove(0);
     }
 
     //删除最后一个元素
-    public int removeLast(){
+    public E removeLast(){
         return remove(size-1);
     }
 
     //删除指定元素
-    public void removeElement(int e){
+    public void removeElement(E e){
         int index=find(e);
         if (index!=-1)
             remove(index);
