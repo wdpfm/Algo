@@ -121,4 +121,29 @@ public class LinkedList<E> {
         size--;
         return delNode.e;
     }
+
+    //删除链表尾节点
+    public E removeLast(){
+        return remove(size-1);
+    }
+
+    //删除指定索引节点
+    public E remove(int index){
+        if (index<0||index>=size)
+            throw new IllegalArgumentException("索引异常");
+        if(index==0){
+            return removeFirst();
+        }else{
+            Node pre=head;
+            for (int i = 0; i < index-1; i++) {
+                pre=pre.next;
+            }
+            Node delNode=pre.next;
+            pre.next=delNode;
+            delNode.next=null;
+            size--;
+            return delNode.e;
+        }
+    }
+
 }
