@@ -1,5 +1,7 @@
 package com.wdpfm.line.array;
 
+import java.security.DrbgParameters;
+
 /**
  * 描述:封装数组常用操作 没有申请额外空间→空间复杂度都是O(1)
  */
@@ -35,10 +37,20 @@ public class ArrayList<E> {
     //最差时间复杂度，循环代码运行最大的次数
     //size=data.length&&index=0
     public void insert(int index,E e){
-        if (size==data.length)
-            throw new IllegalArgumentException("插入失败，数组已满");
+        //if (size==data.length) throw new IllegalArgumentException("插入失败，数组已满");
         if (index<0||index>size){
             throw new IllegalArgumentException("索引异常");
+        }
+        if (size==data.length){
+            //1.创建一个容量为2倍于之前容量的临时数组
+            int newCapacity=capacity*2;
+            E[] newData=(E[])new Object[newCapacity];
+            //2.将原来数组中的元素复制到新数组中
+            for (int i = 0; i < data.length; i++) {
+                newData[i]=data[i];
+            }
+            //3.将新数组覆盖老数据组
+            data=newData;
         }
         //数组后移
         for (int i = size-1; i >= index ; i--) {
