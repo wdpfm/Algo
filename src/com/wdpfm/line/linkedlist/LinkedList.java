@@ -77,4 +77,10 @@ public class LinkedList<E> {
         }
         current.e=e;
     }
+
+    //链表表头新增节点
+    public void insertFirst(E e){
+        head=new Node(e,head);
+        size++;
+    }
 }
