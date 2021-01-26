@@ -48,6 +48,8 @@ public class LinkedList<E> {
     }
 
     //查询指定索引的节点值
+    //时间复杂度O(n)
+    //空间复杂度O(1)
     public E get(int index){
         //检查index合法性
         if (index<0||index>=size)
@@ -59,15 +61,19 @@ public class LinkedList<E> {
         return current.e;
     }
 
+    //时间复杂度O(1)
     public E getFirst(){
         return get(0);
     }
 
+    //时间复杂度O(n)
     public E getLast(){
         return get(size-1);
     }
 
     //修改指定索引的节点值
+    //时间复杂度O(n)
+    //空间复杂度O(1)
     public void update(int index,E e){//检查index合法性
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
@@ -79,16 +85,20 @@ public class LinkedList<E> {
     }
 
     //链表表头新增节点
+    //时间复杂度O(1)
     public void insertFirst(E e){
         insert(0,e);
     }
 
     //链表表尾新增节点
+    //时间复杂度O(n)
     public void insertLast(E e){
         insert(size,e);
     }
 
     //指定索引插入新节点
+    //时间复杂度O(n)
+    //空间复杂度O(1)
     public void insert(int index,E e){
         if (index<0||index>size)
             throw new IllegalArgumentException("索引异常");
@@ -104,16 +114,20 @@ public class LinkedList<E> {
     }
 
     //删除链表头节点
+    //时间复杂度O(1)
     public E removeFirst(){
         return remove(0);
     }
 
     //删除链表尾节点
+    //时间复杂度O(n)
     public E removeLast(){
         return remove(size-1);
     }
 
     //删除指定索引节点
+    //时间复杂度O(n)
+    //空间复杂度O(1)
     public E remove(int index){
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
@@ -129,6 +143,7 @@ public class LinkedList<E> {
     }
 
     //判断链表中是否存在指定元素
+    //时间复杂度O(n)
     public boolean contains(E e){
         Node curr=dummyHead.next;
         while(curr!=null){
@@ -139,6 +154,7 @@ public class LinkedList<E> {
         return false;
     }
 
+    //时间复杂度O(n)
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();
