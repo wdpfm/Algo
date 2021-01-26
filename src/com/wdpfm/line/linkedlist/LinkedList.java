@@ -80,7 +80,35 @@ public class LinkedList<E> {
 
     //链表表头新增节点
     public void insertFirst(E e){
-        head=new Node(e,head);
+        Node newNode=new Node(e);
+        newNode.next=head;
+        head=newNode;
+        //以上三行可合并为head=new Node(e,head);
         size++;
+    }
+
+    //链表表尾新增节点
+    public void insertLast(E e){
+        insert(size,e);
+    }
+
+    //指定索引插入新节点
+    public void insert(int index,E e){
+        if (index<0||index>size)
+            throw new IllegalArgumentException("索引异常");
+        if(index==0){
+            insertFirst(e);
+        }else{
+            Node pre=head;
+            for (int i = 0; i < index-1; i++) {
+                pre=pre.next;
+            }
+            Node newNode=new Node(e);
+            newNode.next=pre.next;
+            pre.next=newNode;
+            //以上三行可合并为pre.next=new Node(e,pre.next);
+            size++;
+        }
+
     }
 }
