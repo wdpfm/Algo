@@ -109,6 +109,16 @@ public class LinkedList<E> {
             //以上三行可合并为pre.next=new Node(e,pre.next);
             size++;
         }
+    }
 
+    //删除链表头节点
+    public E removeFirst(){
+        if(head==null)
+            return null;
+        Node delNode=head;
+        head=head.next;
+        delNode.next=null;
+        size--;
+        return delNode.e;
     }
 }
