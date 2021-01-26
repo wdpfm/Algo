@@ -28,14 +28,14 @@ public class LinkedList<E> {
         }
     }
 
-    //头结点
-    private Node head;
+    //虚拟头结点
+    private Node dummyHead;
 
     //链表长度
     private int size;
 
     public LinkedList(){
-        head=null;
+        dummyHead=new Node();
         size=0;
     }
 
@@ -52,7 +52,7 @@ public class LinkedList<E> {
         //检查index合法性
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
-        Node current=head;
+        Node current=dummyHead.next;
         for (int i = 0; i < index; i++) {
             current=current.next;
         }
@@ -71,7 +71,7 @@ public class LinkedList<E> {
     public void update(int index,E e){//检查index合法性
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
-        Node current=head;
+        Node current=dummyHead.next;
         for (int i = 0; i < index; i++) {
             current=current.next;
         }
@@ -80,10 +80,7 @@ public class LinkedList<E> {
 
     //链表表头新增节点
     public void insertFirst(E e){
-        Node newNode=new Node(e);
-        newNode.next=head;
-        head=newNode;
-        //以上三行可合并为head=new Node(e,head);
+        insert(0,e);
         size++;
     }
 
@@ -96,30 +93,20 @@ public class LinkedList<E> {
     public void insert(int index,E e){
         if (index<0||index>size)
             throw new IllegalArgumentException("索引异常");
-        if(index==0){
-            insertFirst(e);
-        }else{
-            Node pre=head;
-            for (int i = 0; i < index-1; i++) {
-                pre=pre.next;
-            }
-            Node newNode=new Node(e);
-            newNode.next=pre.next;
-            pre.next=newNode;
-            //以上三行可合并为pre.next=new Node(e,pre.next);
-            size++;
+        Node pre=dummyHead;
+        for (int i = 0; i < index; i++) {
+            pre=pre.next;
         }
+        Node newNode=new Node(e);
+        newNode.next=pre.next;
+        pre.next=newNode;
+        //以上三行可合并为pre.next=new Node(e,pre.next);
+        size++;
     }
 
     //删除链表头节点
     public E removeFirst(){
-        if(head==null)
-            return null;
-        Node delNode=head;
-        head=head.next;
-        delNode.next=null;
-        size--;
-        return delNode.e;
+        return remove(0);
     }
 
     //删除链表尾节点
@@ -131,19 +118,14 @@ public class LinkedList<E> {
     public E remove(int index){
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
-        if(index==0){
-            return removeFirst();
-        }else{
-            Node pre=head;
-            for (int i = 0; i < index-1; i++) {
-                pre=pre.next;
-            }
-            Node delNode=pre.next;
-            pre.next=delNode;
-            delNode.next=null;
-            size--;
-            return delNode.e;
+        Node pre=dummyHead;
+        for (int i = 0; i < index; i++) {
+            pre=pre.next;
         }
+        Node delNode=pre.next;
+        pre.next=delNode;
+        delNode.next=null;
+        size--;
+        return delNode.e;
     }
-
 }
