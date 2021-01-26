@@ -42,15 +42,7 @@ public class ArrayList<E> {
             throw new IllegalArgumentException("索引异常");
         }
         if (size==data.length){
-            //1.创建一个容量为2倍于之前容量的临时数组
-            int newCapacity=capacity*2;
-            E[] newData=(E[])new Object[newCapacity];
-            //2.将原来数组中的元素复制到新数组中
-            for (int i = 0; i < data.length; i++) {
-                newData[i]=data[i];
-            }
-            //3.将新数组覆盖老数据组
-            data=newData;
+            resize(capacity*2);
         }
         //数组后移
         for (int i = size-1; i >= index ; i--) {
@@ -58,6 +50,17 @@ public class ArrayList<E> {
         }
         data[index]=e;
         size++;
+    }
+
+    private void resize(int newCapacity){
+        //1.创建一个容量为newCapacity的临时数组
+        E[] newData=(E[])new Object[newCapacity];
+        //2.将原来数组中的元素复制到新数组中
+        for (int i = 0; i < data.length; i++) {
+            newData[i]=data[i];
+        }
+        //3.将新数组覆盖老数据组
+        data=newData;
     }
 
     //头插
@@ -118,6 +121,12 @@ public class ArrayList<E> {
             data[i-1]=data[i];
         }
         size--;
+        //gc清除不用的对象
+        data[size]=null;
+        //如果size等于总容量的一半，则进行缩容
+        if(size== data.length/2){
+            resize(data.length/2);
+        }
         return result;
     }
 
