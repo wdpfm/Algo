@@ -88,6 +88,34 @@ public class ArrayList {
         data[index]=e;
     }
 
+    //删除操作
+    public int remove(int index){
+        if(index<0||index>=size)
+            throw new IllegalArgumentException("索引异常");
+        int result=data[index];
+        for (int i = index+1; i < size; i++) {
+            data[i-1]=data[i];
+        }
+        size--;
+        return result;
+    }
+
+    //删除第一个元素
+    public int removeFirst(){
+        return remove(0);
+    }
+
+    //删除最后一个元素
+    public int removeLast(){
+        return remove(size-1);
+    }
+
+    //删除指定元素
+    public void removeElement(int e){
+        int index=find(e);
+        if (index!=-1)
+            remove(index);
+    }
 
     @Override
     public String toString() {
