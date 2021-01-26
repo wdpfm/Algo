@@ -81,6 +81,14 @@ public class ArrayList {
         return false;
     }
 
+    //修改操作
+    public void update(int index,int e){
+        if(index<0||index>=size)
+            throw new IllegalArgumentException("索引异常");
+        data[index]=e;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();//用于拼接字符串
