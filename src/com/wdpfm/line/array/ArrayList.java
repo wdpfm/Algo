@@ -153,7 +153,7 @@ public class ArrayList<E> {
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();//用于拼接字符串
-        sb.append(String.format("数组大小:%d，数组容量:%d\n",size,capacity));
+        sb.append(String.format("数组大小:%d，数组容量:%d\n",size,data.length));
         sb.append("[");
         for (int i = 0; i < size; i++) {
             sb.append(data[i]);
