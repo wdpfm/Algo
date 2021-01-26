@@ -66,4 +66,15 @@ public class LinkedList<E> {
     public E getLast(){
         return get(size-1);
     }
+
+    //修改指定索引的节点值
+    public void update(int index,E e){//检查index合法性
+        if (index<0||index>=size)
+            throw new IllegalArgumentException("索引异常");
+        Node current=head;
+        for (int i = 0; i < index; i++) {
+            current=current.next;
+        }
+        current.e=e;
+    }
 }
