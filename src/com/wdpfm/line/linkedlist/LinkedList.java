@@ -81,7 +81,6 @@ public class LinkedList<E> {
     //链表表头新增节点
     public void insertFirst(E e){
         insert(0,e);
-        size++;
     }
 
     //链表表尾新增节点
@@ -123,7 +122,7 @@ public class LinkedList<E> {
             pre=pre.next;
         }
         Node delNode=pre.next;
-        pre.next=delNode;
+        pre.next=delNode.next;
         delNode.next=null;
         size--;
         return delNode.e;
@@ -138,5 +137,17 @@ public class LinkedList<E> {
             curr=curr.next;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb=new StringBuilder();
+        Node curr=dummyHead.next;
+        while(curr!=null){
+            sb.append(curr+"=>");
+            curr=curr.next;
+        }
+        sb.append("null");
+        return sb.toString();
     }
 }
