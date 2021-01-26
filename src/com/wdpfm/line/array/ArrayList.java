@@ -71,7 +71,7 @@ public class ArrayList<E> {
     }
 
     //尾插
-    //时间复杂度O(1)
+    //时间复杂度O(1) 均摊时间复杂度O(1)
     public void insertLast(E e){
         insert(size,e);
     }
@@ -124,8 +124,9 @@ public class ArrayList<E> {
         size--;
         //gc清除不用的对象
         data[size]=null;
-        //如果size等于总容量的一半，则进行缩容
-        if(size== data.length/2){
+        //如果size等于总容量的四分之一，则进行缩容
+        //因为data.length有可能不断减少，所以有可能小于2
+        if(size== data.length/4&&data.length/2!=0){
             resize(data.length/2);
         }
         return result;
@@ -138,7 +139,7 @@ public class ArrayList<E> {
     }
 
     //删除最后一个元素
-    //时间复杂度O(1)
+    //时间复杂度O(1) 均摊时间复杂度O(1)
     public E removeLast(){
         return remove(size-1);
     }
