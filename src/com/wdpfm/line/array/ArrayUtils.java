@@ -30,7 +30,7 @@ public class ArrayUtils {
     //从数组中删除指定位置的元素
     //时间复杂度O(n)
     //空间复杂度O(n)
-    public static int[] removeElement(int[] src,int index){
+    public static int[] deleteElement(int[] src,int index){
         int length=src.length;
         //创建比原数组小1的新数组
         int[] dest=new int[length-1];
@@ -45,9 +45,5 @@ public class ArrayUtils {
             dest[i]=src[i+1];
         }
         return dest;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

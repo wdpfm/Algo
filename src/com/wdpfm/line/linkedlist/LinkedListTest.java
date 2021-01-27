@@ -22,14 +22,14 @@ public class LinkedListTest {
         System.out.println(linkedList);
 
 
-        linkedList.remove(2);
+        linkedList.delete(2);
         System.out.println(linkedList);
 
-        linkedList.removeFirst();
+        linkedList.deleteFirst();
         System.out.println(linkedList);
 
 
-        linkedList.removeLast();
+        linkedList.deleteLast();
         System.out.println(linkedList);
     }
 }

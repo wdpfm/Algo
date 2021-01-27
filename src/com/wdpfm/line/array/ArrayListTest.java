@@ -10,7 +10,7 @@ public class ArrayListTest {
         arrayList.insertFirst(1);
         arrayList.insertLast(2);
         System.out.println(arrayList.isEmpty());
-        arrayList.removeElement(1);
+        arrayList.deleteElement(1);
         System.out.println(arrayList);
 
         ArrayList<String> arrayList1=new ArrayList();

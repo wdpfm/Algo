@@ -115,20 +115,20 @@ public class LinkedList<E> {
 
     //删除链表头节点
     //时间复杂度O(1)
-    public E removeFirst(){
-        return remove(0);
+    public E deleteFirst(){
+        return delete(0);
     }
 
     //删除链表尾节点
     //时间复杂度O(n)
-    public E removeLast(){
-        return remove(size-1);
+    public E deleteLast(){
+        return delete(size-1);
     }
 
     //删除指定索引节点
     //时间复杂度O(n)
     //空间复杂度O(1)
-    public E remove(int index){
+    public E delete(int index){
         if (index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
         Node pre=dummyHead;

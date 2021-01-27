@@ -114,7 +114,7 @@ public class ArrayList<E> {
 
     //删除操作
     //时间复杂度O(n)
-    public E remove(int index){
+    public E delete(int index){
         if(index<0||index>=size)
             throw new IllegalArgumentException("索引异常");
         E result=data[index];
@@ -134,22 +134,22 @@ public class ArrayList<E> {
 
     //删除第一个元素
     //时间复杂度O(n)
-    public E removeFirst(){
-        return remove(0);
+    public E deleteFirst(){
+        return delete(0);
     }
 
     //删除最后一个元素
     //时间复杂度O(1) 均摊时间复杂度O(1)
-    public E removeLast(){
-        return remove(size-1);
+    public E deleteLast(){
+        return delete(size-1);
     }
 
     //删除指定元素
     //时间复杂度O(n)
-    public void removeElement(E e){
+    public void deleteElement(E e){
         int index=find(e);
         if (index!=-1)
-            remove(index);
+            delete(index);
     }
 
     @Override
