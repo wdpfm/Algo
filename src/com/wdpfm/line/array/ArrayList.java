@@ -152,6 +152,11 @@ public class ArrayList<E> {
             delete(index);
     }
 
+    //获取最后一个元素
+    public E getLast(){
+        return data[size-1];
+    }
+
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();//用于拼接字符串
